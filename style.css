@@ -37,6 +37,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  height: 100%;
 }
 
 .movie-image {
@@ -45,18 +51,41 @@ body {
   user-select: none;
   pointer-events: none;
   width: 28vw;
-  max-height: 70vh;
+  height: 100%;
   margin-left: 20px;
 }
 
 .date {
   font-family: "GT-Ultra";
-  font-size: 10rem;
+  font-size: 12.4rem;
 }
 
 .logo {
   height: 80px;
   width: 80px;
+}
+
+.description-container {
+  width: 85%;
+  max-width: 530px;
+}
+
+.movie-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 49px;
+  margin: 24px 0 8px;
+}
+
+.movie-description {
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 30px;
+  margin: 0;
+}
+
+.date-container {
+  width: min-content;
 }
 
 .bottom-container {
@@ -75,7 +104,7 @@ body {
   width: 35px;
   fill: #FFF38A;
   cursor: pointer;
-  transition: fill 0.3s ease-out;
+  transition: fill 0.2s ease-out;
 }
 .arrow-container .arrow.disabled {
   fill: #827B68;
@@ -98,7 +127,7 @@ body {
   width: 36px;
   border-radius: 50%;
   border: solid 2px #827B68;
-  transition: background-color 0.3s ease-out;
+  transition: background-color 0.2s ease-out;
 }
 .stepper-container .circle.active {
   background-color: #FFF38A;
@@ -118,7 +147,7 @@ body {
   transform-origin: left center;
   z-index: -1;
   transform: translateY(-50%) scaleX(0);
-  transition: transform 0.3s ease-out;
+  transition: transform 0.2s ease-out;
 }
 
 /*# sourceMappingURL=style.css.map */
