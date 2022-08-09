@@ -15,8 +15,6 @@ body {
     background-color: $backgroundColor;
     color: $mainColor;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-    padding: 10vh;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -26,11 +24,13 @@ body {
 }
 
 .main-wrapper {
+    height: 80%;
     width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 90px;
+    gap: 5vh;
+    position: relative;
 }
 
 .top-container {
@@ -52,18 +52,19 @@ body {
 }
 
 .movie-image {
+    height: 100%;
+    width: 28vw;
     object-fit: cover;
     object-position: 50% 50%;
     user-select: none;
     pointer-events: none;
-    width: 28vw;
-    height: 100%;
     margin-left: 20px;
 }
 
 .date {
     font-family: 'GT-Ultra';
     font-size: 12.4rem;
+    line-height: 11rem;
 }
 
 .logo {
@@ -159,5 +160,5 @@ body {
 
 }
 
-// regler pb padding
+// regler repsonsive image => virer container
 // faire animations
