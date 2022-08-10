@@ -43,32 +43,51 @@ body {
 .image-container {
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 
 .movie-image {
-  height: 100%;
+  height: 130%;
   width: 28vw;
+  max-width: 450px;
   object-fit: cover;
-  object-position: 50% 50%;
+  object-position: 50% -5px;
   user-select: none;
   pointer-events: none;
   margin-left: 20px;
 }
 
-.date {
-  font-family: "GT-Ultra";
-  font-size: 12.4rem;
-  line-height: 11rem;
-}
-
-.logo {
-  height: 80px;
-  width: 80px;
+.descriptions-container {
+  position: relative;
+  width: 85%;
 }
 
 .description-container {
-  width: 85%;
-  max-width: 530px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transform: translateX(0);
+  transition-property: opacity transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  width: 100%;
+}
+.description-container.first-description {
+  position: static;
+}
+.description-container.prev-description-section {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+.description-container.next-description-section {
+  opacity: 0;
+  transform: translateX(50px);
+}
+.description-container .logo {
+  position: relative;
+  height: 80px;
+  width: 80px;
 }
 
 .movie-title {
@@ -83,10 +102,40 @@ body {
   font-size: 1.25rem;
   line-height: 30px;
   margin: 0;
+  max-width: 500px;
 }
 
 .date-container {
-  width: min-content;
+  width: 100%;
+}
+.date-container .date {
+  font-family: "GT-Ultra";
+  font-size: 12.4rem;
+  line-height: 8rem;
+  display: inline-block;
+  border: 2px solid red;
+  position: relative;
+}
+.date-container .date.third-number > *, .date-container .date.fourth-number > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transform: translateX(0);
+  transition-property: opacity transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+}
+.date-container .date.third-number > *:first-child, .date-container .date.fourth-number > *:first-child {
+  position: static;
+}
+.date-container .date.third-number > *.prev-number, .date-container .date.fourth-number > *.prev-number {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+.date-container .date.third-number > *.next-number, .date-container .date.fourth-number > *.next-number {
+  opacity: 0;
+  transform: translateX(50px);
 }
 
 .bottom-container {
@@ -128,7 +177,7 @@ body {
   width: 36px;
   border-radius: 50%;
   border: solid 2px #827B68;
-  transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-in;
 }
 .stepper-container .circle.active {
   background-color: #FFF38A;
@@ -148,7 +197,7 @@ body {
   transform-origin: left center;
   z-index: -1;
   transform: translateY(-50%) scaleX(0);
-  transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-in;
 }
 
 /*# sourceMappingURL=style.css.map */
