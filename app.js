@@ -10,6 +10,10 @@ const dateSecondZero = document.querySelector('#zero')
 const dateSecondThree = document.querySelector('#three')
 const scrollableCaroussel = document.querySelector('.caroussel .scrollable-container')
 
+window.addEventListener('load', () => {
+    document.body.classList.remove('loading-anim')
+})
+
 let slideIndex = 0;
 const MIN_SLIDE_INDEX = 0;
 const MAX_SLIDE_INDEX = 2;

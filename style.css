@@ -20,6 +20,8 @@ body {
 .main-wrapper {
   height: 80%;
   width: 80%;
+  max-width: 1400px;
+  max-height: 900px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,6 +40,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  gap: 50px;
 }
 
 .caroussel {
@@ -46,18 +49,20 @@ body {
   max-width: 450px;
   margin-left: 20px;
   overflow: hidden;
-  border: 2px solid yellow;
+  transform: translateY(-30px);
+  opacity: 0;
+  animation: firstApparition 0.5s ease-out forwards;
+  animation-delay: 1.2s;
 }
 
 .scrollable-container {
   display: flex;
+  height: 100%;
   width: 300%;
   transition: transform 0.2s linear;
 }
 
 .image-container {
-  position: relative;
-  height: 100%;
   width: 100%;
   overflow: hidden;
 }
@@ -89,6 +94,18 @@ body {
 .description-container.first-description {
   position: static;
 }
+.description-container.first-description h3 {
+  transform: translateY(-30px);
+  opacity: 0;
+  animation: firstApparition 0.5s ease-out forwards;
+  animation-delay: 0.4s;
+}
+.description-container.first-description p {
+  transform: translateY(-30px);
+  opacity: 0;
+  animation: firstApparition 0.5s ease-out forwards;
+  animation-delay: 0.6s;
+}
 .description-container.prev-description-section {
   opacity: 0;
   transform: translateX(-50px);
@@ -101,6 +118,10 @@ body {
   position: relative;
   height: 80px;
   width: 80px;
+  transform: translateY(-30px);
+  opacity: 0;
+  animation: firstApparition 0.5s ease-out forwards;
+  animation-delay: 0.2s;
 }
 
 .movie-title {
@@ -121,6 +142,10 @@ body {
 
 .date-container {
   width: 100%;
+  transform: translateY(-30px);
+  opacity: 0;
+  animation: firstApparition 0.5s ease-out forwards;
+  animation-delay: 1s;
 }
 .date-container .date {
   font-family: "GT-Ultra";
@@ -130,7 +155,7 @@ body {
   position: relative;
 }
 .date-container .date.third-number {
-  margin-left: -5px;
+  margin-left: -15px;
 }
 .date-container .date.third-number > *, .date-container .date.fourth-number > * {
   position: absolute;
@@ -153,6 +178,9 @@ body {
   opacity: 0;
   transform: translateX(50px);
 }
+.date-container .date.fourth-number > * {
+  transition-delay: 0.02s;
+}
 
 .bottom-container {
   display: flex;
@@ -165,6 +193,10 @@ body {
   display: flex;
   justify-content: space-between;
   width: 115px;
+  transform: translateY(-30px);
+  opacity: 0;
+  animation: firstApparition 0.5s ease-out forwards;
+  animation-delay: 1.2s;
 }
 .arrow-container .arrow {
   width: 35px;
@@ -194,9 +226,24 @@ body {
   border-radius: 50%;
   border: solid 2px #827B68;
   transition: background-color 0.2s ease-in;
+  transform: scale(0);
+}
+.stepper-container .circle:nth-child(2) {
+  animation: stepperCirclesApparition 0.4s 1.4s ease-out forwards;
+}
+.stepper-container .circle:nth-child(3) {
+  animation: stepperCirclesApparition 0.4s 1.4s ease-out forwards;
+}
+.stepper-container .circle:nth-child(4) {
+  animation: stepperCirclesApparition 0.4s 1.4s ease-out forwards;
+}
+.stepper-container .circle:nth-child(5) {
+  animation: stepperCirclesApparition 0.4s 1.4s ease-out forwards;
 }
 .stepper-container .circle.active {
   background-color: #FFF38A;
+  transform: scale(1);
+  z-index: 1;
 }
 .stepper-container .stepper-background-line {
   background-color: #827B68;
@@ -205,15 +252,38 @@ body {
   position: absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform-origin: left center;
+  transform: translateY(-50%) scaleX(0);
   z-index: -2;
+  animation: stepperLineApparition 0.6s 1.4s ease-out forwards;
 }
 .stepper-container .stepper-background-line.active {
   background-color: #FFF38A;
-  transform-origin: left center;
   z-index: -1;
   transform: translateY(-50%) scaleX(0);
   transition: transform 0.2s ease-in;
+  animation: none;
+}
+
+.loading-anim * {
+  animation-play-state: paused !important;
+}
+
+@keyframes firstApparition {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes stepperLineApparition {
+  100% {
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+@keyframes stepperCirclesApparition {
+  100% {
+    transform: scale(1);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
