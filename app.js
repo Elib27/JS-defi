@@ -3,10 +3,16 @@ const arrowRightButton = document.querySelector('.arrow-right');
 const circles = document.querySelectorAll('.circle');
 const stepperLine = document.querySelector('.stepper-background-line.active')
 const descriptionContainers = document.querySelectorAll('.description-container')
-const dateFirstNumbers = document.querySelectorAll('.third-number .seven, .third-number .eight')
-const dateSecondNumbers = document.querySelectorAll('.fourth-number .seven, .fourth-number .zero, .fourth-number .three')
+const dateFirstSeven = document.querySelector('#Fseven')
+const dateFirstEight = document.querySelector('#eight')
+const dateSecondSeven = document.querySelector('#Sseven')
+const dateSecondZero = document.querySelector('#zero')
+const dateSecondThree = document.querySelector('#three')
+const scrollableCaroussel = document.querySelector('.caroussel .scrollable-container')
 
 let slideIndex = 0;
+const MIN_SLIDE_INDEX = 0;
+const MAX_SLIDE_INDEX = 2;
 
 function updateStepperLineSize() {
     stepperLine.style.transform = `translateY(-50%) scaleX(${slideIndex * 0.25})`
@@ -21,6 +27,21 @@ function updateActivatedCircles() {
             circle.classList.add('active')
         }
     })
+}
+
+function updateArrows() {
+    if (slideIndex === MIN_SLIDE_INDEX) {
+        arrowLeftButton.style.fill = '#827B68'
+        arrowRightButton.style.fill = '#FFF38A'
+    }
+    else if (slideIndex === MAX_SLIDE_INDEX) {
+        arrowLeftButton.style.fill = '#FFF38A'
+        arrowRightButton.style.fill = '#827B68'
+    }   
+    else {
+        arrowLeftButton.style.fill = '#FFF38A'
+        arrowRightButton.style.fill = '#FFF38A'
+    }
 }
 
 function updateDescriptionContainer() {
@@ -42,64 +63,52 @@ function updateDescriptionContainer() {
 function updateDate() {
     switch (slideIndex) {
         case 0:
-            dateFirstNumbers.forEach((firstNumber) => {
-                if (firstNumber.classList.contains('seven')){
-                    firstNumber.classList.remove('prev-number')
-                }
-                else {
-                    firstNumber.classList.add('prev-number')
-                }
-            })
+            dateFirstSeven.classList = ''
+            dateFirstEight.classList = 'next-number'
+            dateSecondSeven.classList = ''
+            dateSecondZero.classList = 'next-number'
             break
-        case (1):
-            dateFirstNumbers.forEach((firstNumber) => {
-                if (firstNumber.classList.contains('eight')){
-                    firstNumber.classList.remove('next-number')
-                }
-                else {
-                    firstNumber.classList.add('next-number')
-                }
-            })
+        case 1:
+            dateFirstSeven.classList = 'prev-number'
+            dateFirstEight.classList = ''
+            dateSecondSeven.classList = 'prev-number'
+            dateSecondZero.classList = ''
+            dateSecondThree.classList = 'next-number'
             break
-        case (2):
-            dateFirstNumbers.forEach((firstNumber) => {
-                if (firstNumber.classList.contains('eight')){
-                    firstNumber.classList.remove('next-number')
-                }
-                else {
-                    firstNumber.classList.add('next-number')
-                }
-            })
+        case 2:
+            dateFirstSeven.classList = 'prev-number'
+            dateSecondZero.classList = 'prev-number'
+            dateSecondThree.classList = ''
+            break
     }
 }
 
+function updateCaroussel() {
+    const translatePercentage = (-100 / 3 ) * slideIndex
+    scrollableCaroussel.style.transform = `translateX(${translatePercentage}%)`
+}
+
 function nextSlide() {
-    if (slideIndex < 2) {
+    if (slideIndex < MAX_SLIDE_INDEX) {
         slideIndex += 1;
-        arrowRightButton.style.fill = '#FFF38A'
         updateStepperLineSize()
         updateActivatedCircles()
+        updateArrows()
         updateDescriptionContainer()
         updateDate()
-        if (slideIndex === 2) {
-            arrowRightButton.style.fill = '#827B68'
-            arrowLeftButton.style.fill = '#FFF38A'
-        }
+        updateCaroussel()
     }
 }
 
 function prevSlide() {
-    if (slideIndex > 0) {
+    if (slideIndex > MIN_SLIDE_INDEX) {
         slideIndex -= 1;
-        arrowLeftButton.style.fill = '#FFF38A'
         updateStepperLineSize()
         updateActivatedCircles()
+        updateArrows()
         updateDescriptionContainer()
         updateDate()
-        if (slideIndex === 0) {
-            arrowLeftButton.style.fill = '#827B68'
-            arrowRightButton.style.fill = '#FFF38A'
-        }
+        updateCaroussel()
     }
 }
 

@@ -40,21 +40,34 @@ body {
   position: relative;
 }
 
+.caroussel {
+  height: 100%;
+  width: 28vw;
+  max-width: 450px;
+  margin-left: 20px;
+  overflow: hidden;
+  border: 2px solid yellow;
+}
+
+.scrollable-container {
+  display: flex;
+  width: 300%;
+  transition: transform 0.2s linear;
+}
+
 .image-container {
   position: relative;
   height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
 .movie-image {
-  height: 130%;
-  width: 28vw;
-  max-width: 450px;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
-  object-position: 50% -5px;
   user-select: none;
   pointer-events: none;
-  margin-left: 20px;
 }
 
 .descriptions-container {
@@ -95,6 +108,7 @@ body {
   font-size: 2.5rem;
   line-height: 49px;
   margin: 24px 0 8px;
+  white-space: nowrap;
 }
 
 .movie-description {
@@ -113,8 +127,10 @@ body {
   font-size: 12.4rem;
   line-height: 8rem;
   display: inline-block;
-  border: 2px solid red;
   position: relative;
+}
+.date-container .date.third-number {
+  margin-left: -5px;
 }
 .date-container .date.third-number > *, .date-container .date.fourth-number > * {
   position: absolute;
