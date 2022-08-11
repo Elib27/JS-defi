@@ -9,9 +9,12 @@ const dateSecondSeven = document.querySelector('#Sseven')
 const dateSecondZero = document.querySelector('#zero')
 const dateSecondThree = document.querySelector('#three')
 const scrollableCaroussel = document.querySelector('.caroussel .scrollable-container')
+const mainWrapper = document.querySelector('.main-wrapper')
+const loader = document.querySelector('.loader')
 
 window.addEventListener('load', () => {
-    document.body.classList.remove('loading-anim')
+    loader.style.display = 'none'
+    mainWrapper.classList.remove('loading-anim')
 })
 
 let slideIndex = 0;
